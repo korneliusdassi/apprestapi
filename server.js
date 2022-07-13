@@ -11,5 +11,5 @@ var router = require('./router');
 router(app);
 
 app.listen(3000, () => {
-  console.log('Server started on port');
+  console.log('Server sedang berjalan pada port 3000');
 });
