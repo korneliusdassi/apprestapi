@@ -10,6 +10,9 @@ app.use(bodyParser.json());
 var router = require('./router');
 router(app);
 
-app.listen(3000, () => {
-  console.log('Server sedang berjalan pada port 3000');
+const port = 3000;
+const host = 'localhost';
+
+app.listen(port, host, () => {
+  console.log(`Server berjalan pada http://${host}:${port}`);
 });
