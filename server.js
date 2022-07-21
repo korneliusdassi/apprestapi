@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //panggil routes
-var router = require('./router');
+const router = require('./router');
 router(app);
 
 const port = 3000;
