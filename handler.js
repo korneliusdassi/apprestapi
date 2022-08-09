@@ -80,7 +80,7 @@ exports.deleteMahasiswa = function (req, res) {
 //menampilkan matakuliah group
 exports.tampilMatakuliah = function (req, res) {
   connection.query(
-    'SELECT mahasiswa.id_mahasiswa, mahasiswa.nim, mahasiswa.nama, mahasiswa.jurusan, matakuliah.matakuliah, matakuliah.sks FROM krs JOIN matakuliah JOIN mahasiswa WHERE krs.id_matakuliah=matakuliah.id_matakuliah AND krs.id_mahasiswa=mahasiswa.id_mahasiswa ORDER BY mahasiswa.id_mahasiswa;',
+    'SELECT mahasiswa.id_mahasiswa, mahasiswa.nim, mahasiswa.nama,  mahasiswa.jurusan, matakuliah.matakuliah, matakuliah.sks FROM krs JOIN matakuliah JOIN mahasiswa WHERE krs.id_matakuliah=matakuliah.id_matakuliah AND krs.id_mahasiswa=mahasiswa.id_mahasiswa ORDER BY mahasiswa.id_mahasiswa;',
     function (error, rows) {
       if (error) {
         console.log(error);

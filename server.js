@@ -1,14 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+var morgan = require('morgan');
 
 //parse app/json
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(morgan('dev'));
 
 //panggil routes
 const router = require('./router');
 router(app);
+
+//daftarkan menu router dri index
+app.use('/auth', require('./middleware'));
 
 const port = 3000;
 const host = 'localhost';
