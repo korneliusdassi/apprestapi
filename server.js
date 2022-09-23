@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const app = express();
-var morgan = require('morgan');
 
 //parse app/json
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.use(morgan('dev'));
 
 //panggil routes

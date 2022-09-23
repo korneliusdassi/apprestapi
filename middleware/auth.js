@@ -1,10 +1,10 @@
-var connection = require('../koneksi');
-var mysql = require('mysql');
-var md5 = require('MD5');
-var response = require('../res');
-var jwt = require('jsonwebtoken');
-var config = require('../config/secret');
-var ip = require('ip');
+const connection = require('../koneksi');
+const mysql = require('mysql');
+const md5 = require('md5');
+const response = require('../res');
+const jwt = require('jsonwebtoken');
+const config = require('../config/secret');
+const ip = require('ip');
 
 //handler registrasi user
 exports.registrasi = function (req, res) {
@@ -16,29 +16,28 @@ exports.registrasi = function (req, res) {
     tanggal_daftar: new Date(),
   };
 
-  var query = 'SELECT email FROM ?? WHERE ??';
+  var query = 'SELECT email FROM ?? WHERE ??=?';
   var table = ['user', 'email', post.email];
 
   query = mysql.format(query, table);
-
   connection.query(query, function (error, rows) {
     if (error) {
       console.log(error);
     } else {
-      if (rows.lenght == 0) {
+      try {
         var query = 'INSERT INTO ?? SET ?';
         var table = ['user'];
         query = mysql.format(query, table);
 
         connection.query(query, post, function (error, rows) {
-          if (error) {
-            console.log(error);
+          if (!error) {
+            response.ok('Berhasil Menambahkan Data Baru', res);
           } else {
-            response.ok('Berhasil Menambahkan data user baru', res);
+            console.log(error);
           }
         });
-      } else {
-        response.ok('Email sudah terdaftar!');
+      } catch (Exception) {
+        response.ok('Email sudah terdaftar!', res);
       }
     }
   });
