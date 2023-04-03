@@ -11,7 +11,7 @@ const conn = mysql.createConnection({
 //error handling
 conn.connect((err) => {
   if (err) throw err;
-  console.log('Mysql terkoneksi');
+  console.log('Database Successfully Connection');
 });
 
 module.exports = conn;
